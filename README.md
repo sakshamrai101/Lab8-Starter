@@ -9,6 +9,8 @@ Service workers achieve this by caching key resources, which allows a website to
 ![PWA](pwa.png "Screenshot Example")
 
 
-## Expose - Part1
+## Expose - Part1 
+
+Uploading a screenshot for this part also, becasue for some reason all my assets do not seem to load on my published site due to some browser error. But everything seemed to be working fine in local. So just uploaded the screenshot for that. 
 
 ![PWA](Part-expose.png "Expose Example")
