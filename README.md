@@ -7,3 +7,8 @@ In Wed Dev, Graceful Degradation is a strategy that ensures a website remains fu
 Service workers achieve this by caching key resources, which allows a website to degrade gracefully when newer features reliant on network connectivity aren't available. For example, during a poor network connection, a service worker can serve cached content instead of attempting to fetch all resources from the network anew. This ensures that users still have access to critical functionality and content, preserving the core user experience, 
 
 ![PWA](pwa.png "Screenshot Example")
+
+
+## Expose - Part1
+
+![PWA](Part-expose.png "Expose Example")
