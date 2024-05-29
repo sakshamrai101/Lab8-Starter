@@ -1,6 +1,6 @@
 # Lab8-Starter
 
-Site Link: 
+Site Link: https://sakshamrai101.github.io/Lab8-Starter/
 
 In Wed Dev, Graceful Degradation is a strategy that ensures a website remains functional, even if some of the newer or advanced features are not supported by a user's browser or device. Service workers, which operate as a type of network proxy within a user's browser, are inherently related to this concept. They enhance the user experience by allowing websites to load and run faster, and more importantly, they enable functionality offline or in unstable network conditions.
 
