@@ -44,6 +44,23 @@ function initializeServiceWorker() {
   /*******************/
   // We first must register our ServiceWorker here before any of the code in
   // sw.js is executed.
+  if ('serviceWorker' in navigator) {
+    if ('serviceWorker' in navigator) {
+      // B2 - Listen for the 'load' event
+      window.addEventListener('load', function () {
+        // B3 - Register './sw.js'
+        navigator.serviceWorker.register('./sw.js')
+          .then(function (registration) {
+            // B4 - Registration was successful
+            console.log('ServiceWorker registration successful with scope: ', registration.scope);
+          })
+          .catch(function (error) {
+            // B5 - Registration failed
+            console.log('ServiceWorker registration failed: ', error);
+          });
+      });
+    }
+}
   // B1. TODO - Check if 'serviceWorker' is supported in the current browser
   // B2. TODO - Listen for the 'load' event on the window object.
   // Steps B3-B6 will be *inside* the event listener's function created in B2
@@ -65,6 +82,40 @@ function initializeServiceWorker() {
  * @returns {Array<Object>} An array of recipes found in localStorage
  */
 async function getRecipes() {
+  const storedRecipes = localStorage.getItem('recipes');
+  if (storedRecipes) {
+    return JSON.parse(storedRecipes);
+  }
+
+  
+  let recipes = [];
+
+  
+  return new Promise(async (resolve, reject) => {
+    
+    for (const url of RECIPE_URLS) {
+      try {
+        
+        const response = await fetch(url);
+        
+        const recipe = await response.json();
+        
+        recipes.push(recipe);
+
+        
+        if (recipes.length === RECIPE_URLS.length) {
+          
+          saveRecipesToStorage(recipes);
+          resolve(recipes);
+        }
+      } catch (error) {
+        
+        console.error('Failed to fetch recipes: ', error);
+        
+        reject(error);
+      }
+    }
+  });
   // EXPOSE - START (All expose numbers start with A)
   // A1. TODO - Check local storage to see if there are any recipes.
   //            If there are recipes, return them.
